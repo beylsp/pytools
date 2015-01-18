@@ -53,7 +53,8 @@ def hexdump(data, result='print'):
     @type data: C{string}.
     @param result: how to yield the result: 'print' (default) or 'generator'.
     @type result: C{string}.
-    @return: generator yielding lines of data in hex format.
+    @return: generator yielding lines of data in hex format
+             (if result requires this).
     @rtype: C{generator} or None.
     @raise ValueError: when value of 'result' argument is unknown.
     """
