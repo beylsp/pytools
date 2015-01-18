@@ -30,8 +30,8 @@ def genhex(data):
         # add padding
         pad = 2
         if len(dat) < 16:
-            r = 16-len(dat)
-            pad += 2*r + r/2
+            rest = 16-len(dat)
+            pad += 2*rest + rest/2
         line += ' '*pad
 
         for byte in dat:
