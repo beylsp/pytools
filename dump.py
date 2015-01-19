@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """
-A collection of dump utilities:
+A collection of dump utilities.
 
   - hexdump() utility is a filter which displays the data input in hexadecimal
     format.
