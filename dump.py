@@ -4,8 +4,18 @@ A collection of dump utilities.
 
   - hexdump() utility is a filter which displays the data input in hexadecimal
     format.
+
+    > hexdump("Lorem ipsum dolor sit amet, consectetur adipisicing elit, ...")
+    0x0000: 4c6f 7265 6d20 6970 7375 6d20 646f 6c6f  Lorem ipsum dolo
+    0x0010: 7220 7369 7420 616d 6574 2c20 636f 6e73  r sit amet, cons
+    0x0020: 6563 7465 7475 7220 6164 6970 6973 6963  ectetur adipisic
+    0x0030: 696e 6720 656c 6974 2c20 2e2e 2e         ing elit, ...
+
   - binary() utility is a filter which displays the data input in binary
     format.
+
+    > binary("\xfe")
+    01111111
 """
 import binascii
 
