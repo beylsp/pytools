@@ -1,15 +1,19 @@
 #!/usr/bin/python
 """
-The hexdump utility is a filter which displays the data input in hexadecimal
-format.
+A collection of dump utilities:
+
+  - hexdump() utility is a filter which displays the data input in hexadecimal
+    format.
+  - binary() utility is a filter which displayes the data input in binary
+    format.
 """
 import binascii
 
-__all__ = ['hexdump']
+__all__ = ['hexdump', 'binary']
 
-def dump(binary, size=4):
+def dump(data, size=4):
     """dump binary data in chunks of 2 octets."""
-    hexstr = binascii.hexlify(binary)
+    hexstr = binascii.hexlify(data)
     return ' '.join(genchunks(hexstr, size))
 
 def genchunks(seq, size):
@@ -61,6 +65,46 @@ def hexdump(data, result='print'):
     if result == 'print':
         for line in gen:
             print line
+    elif result == 'generator':
+        return gen
+    else:
+        raise ValueError("Unknown value of 'result' argument")
+
+def genbit(data, endian):
+    """yield octets in binary format."""
+    generate = genchunks(data, 1)
+    for byte in generate:
+        bits = [0]*8
+        for i in range(8):
+            if ord(byte) & (0x80>>i):
+                bits[i] = 1
+        if endian == 'big':
+            yield ''.join(str(bit) for bit in bits)
+        elif endian == 'little':
+            yield ''.join(str(bit) for bit in reversed(bits))
+        else:
+            raise ValueError("Unknown value of 'endian' argument")
+
+def binary(data, endian='little', result='print'):
+    """
+    Dump data in binary format: either printing to standard output or
+    yielding a generator.
+
+    @param data: data to dump in binary format.
+    @type data: C{string}.
+    @param endian: endianness: 'little' (default) or 'big'.
+    @type endian: C{string}
+    @param result: how to yield the result: 'print' (default) or 'generator'.
+    @type result: C{string}.
+    @return: generator yielding octets of data in binary format
+             (if result requires this).
+    @rtype: C{generator} or None.
+    @raise ValueError: when value of 'result' argument is unknown.
+   """
+    gen = genbit(data, endian)
+
+    if result == 'print':
+        print ' '.join(gen)
     elif result == 'generator':
         return gen
     else:
