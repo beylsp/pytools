@@ -45,7 +45,7 @@ def genhex(data):
 
 def hexdump(data, result='print'):
     """
-    dump data in hexadecimal format: either printing to standard output or
+    Dump data in hexadecimal format: either printing to standard output or
     yielding a generator.
 
     @param data: data to dump in hexadecimal format.
