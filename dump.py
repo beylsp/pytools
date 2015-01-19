@@ -4,7 +4,7 @@ A collection of dump utilities:
 
   - hexdump() utility is a filter which displays the data input in hexadecimal
     format.
-  - binary() utility is a filter which displayes the data input in binary
+  - binary() utility is a filter which displays the data input in binary
     format.
 """
 import binascii
