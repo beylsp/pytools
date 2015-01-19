@@ -14,7 +14,7 @@ A collection of dump utilities.
   - binary() utility is a filter which displays the data input in binary
     format.
 
-    > binary("\xfe")
+    > binary("\\xfe")
     01111111
 """
 import binascii
