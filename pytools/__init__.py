@@ -1,4 +1,4 @@
-"""various useful python tools."""
+"""A collection of various useful python scripts."""
 
 __author__ = 'Patrik Beyls'
 __url__ = 'https://github.com/beylsp/pytools'
