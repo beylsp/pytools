@@ -26,7 +26,11 @@ def query_yes_no(question, default="yes"):
         raise ValueError("Unknown value of 'default' argument")
     while 1:
         print "{0} {1}".format(question, prompt),
-        choice = raw_input().lower()
+        try:
+            choice = raw_input().lower()
+        except KeyboardInterrupt as err:
+            print
+            raise err
         if default is not None and choice == '':
             return default
         elif choice in valid.keys():
