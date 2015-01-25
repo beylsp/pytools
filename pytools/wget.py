@@ -42,7 +42,7 @@ def download(url, destination=None):
         pass
 
 def chunk_read(response, _file, chunk_size):
-    """reads chunk_size from response."""
+    """reads chunk_size from response and writes it to _file."""
     total_size = int(response.info().getheader('Content-Length').strip())
     bytes_so_far = 0
     while 1:
