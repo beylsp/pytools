@@ -57,5 +57,4 @@ def chunk_read(response, _file, chunk_size):
             _LOGGER.debug(msg="Downloaded %0.2f of %0.2f MiB (%0.2f%%)\r" %
                   (float(bytes_so_far)/1048576, float(total_size)/1048576,
                    percent))
-    return bytes_so_far
 
