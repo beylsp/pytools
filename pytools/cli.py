@@ -2,6 +2,7 @@
 """
 A command-line interface.
 """
+import sys
 
 __all__ = ['query_yes_no', 'ask']
 
@@ -28,9 +29,9 @@ def query_yes_no(question, default="yes"):
         print "{0} {1}".format(question, prompt),
         try:
             choice = raw_input().lower()
-        except KeyboardInterrupt as err:
+        except KeyboardInterrupt:
             print
-            raise err
+            sys.exit()
         if default is not None and choice == '':
             return default
         elif choice in valid.keys():
@@ -50,7 +51,11 @@ def ask(question, default=''):
     @rtype: C{string}.
     """
     print question,
-    _input = raw_input()
+    try:
+        _input = raw_input()
+    except KeyboardInterrupt:
+        print
+        sys.exit()
     if not _input:
         return default
     return _input
