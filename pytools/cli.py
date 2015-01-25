@@ -50,7 +50,7 @@ def ask(question, default=''):
     @rtype: C{string}.
     """
     print question,
-    _input = raw_input().lower()
+    _input = raw_input()
     if not _input:
         return default
     return _input
